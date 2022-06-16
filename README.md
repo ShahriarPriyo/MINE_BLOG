@@ -2,6 +2,6 @@
 
 ### NODE Js , MySQL
 
-##blog website backend with database connection using API
+## blog website backend with database connection using API
 
-##RESTful API convention
+## RESTful API convention
