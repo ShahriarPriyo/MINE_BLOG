@@ -1,12 +1,12 @@
 const userController = require('../controllers/userController.js')
-const checkLogin = require('../middlewares/checkLogin')
+const protectUserRoutes = require('../middlewares/protectUserRoutes')
 
 const router = require('express').Router()
 
 router.get('/', userController.getUsers)
 
 router.route('/:id')
-  .put(checkLogin, userController.updateUser)
-  .delete(checkLogin, userController.deleteUser)
+  .put(protectUserRoutes, userController.updateUser)
+  .delete(protectUserRoutes, userController.deleteUser)
 
 module.exports = router

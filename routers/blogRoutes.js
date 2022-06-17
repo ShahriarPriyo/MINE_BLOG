@@ -1,16 +1,17 @@
 const blogController = require('../controllers/blogController.js')
-const checkLogin = require('../middlewares/checkLogin')
+const protectBlog = require('../middlewares/protectBlog')
+const protectBlogRoutes = require('../middlewares/protectBlogRoutes')
 const authController = require('../controllers/authController')
 
 const router = require('express').Router()
 
 router.route('/')
   .get(blogController.getBlogs) /// no protection
-  .post(checkLogin, blogController.createBlog)
+  .post(protectBlog, blogController.createBlog)
 
 router.route('/:id')
   .get(authController.protect, blogController.searchBlog)
-  .put(checkLogin, blogController.updateBlog)
-  .delete(checkLogin, blogController.deleteBlog)
+  .put(protectBlogRoutes, blogController.updateBlog)
+  .delete(protectBlogRoutes, blogController.deleteBlog)
 
 module.exports = router
