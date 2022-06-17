@@ -2,7 +2,8 @@ module.exports = (sequelize, DataTypes) => {
   const blog = sequelize.define('bloglist', {
     title: {
       type: DataTypes.STRING(10000),
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     author: {
       type: DataTypes.INTEGER,

@@ -4,7 +4,7 @@ const catchAsync = require('../utilities/catchAsync')
 const AppError = require('../utilities/appError')
 const jwt = require('jsonwebtoken')
 const { promisify } = require('util')
-const User = require('../models/userModel')
+// const db = require('../models')
 const sendResponse = require('../middlewares/contentNegotiation')
 
 exports.newUser = catchAsync(async (req, res, next) => {
@@ -19,7 +19,7 @@ exports.signinUser = catchAsync(async (req, res, next) => {
   }
   return sendResponse(req, res, data, 200)
 })
-
+/// separate the function
 exports.protect = catchAsync(async (req, res, next) => {
   let token
   // check token or if it's there
@@ -34,12 +34,6 @@ exports.protect = catchAsync(async (req, res, next) => {
   // verification token
   const decoded = promisify(jwt.verify)(token, process.env.JWT_SECRET)
   console.log(decoded)
-
-  // check user still exists
-  const freshUser = User.findById(decoded.id)
-  if (!freshUser) {
-    return next(new AppError('The user belonging to the user no longer exists', 401))
-  }
 
   next()
 })

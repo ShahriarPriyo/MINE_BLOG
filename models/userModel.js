@@ -2,12 +2,17 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('users', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      len: [3, 30]
+      /// 30 charcter allowing here
     },
     username: {
       type: DataTypes.STRING,
       unique: true,
-      allowNull: false
+      isAlpha: true,
+      allowNull: false,
+      isLowerCase: true
+      /// case sensitive, number and alphabet
     },
     email: {
       type: DataTypes.STRING,
@@ -17,7 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      reuired: [true, 'Please provide your password']
+      isNumeric: true,
+      reuired: [true, 'Please provide your password'],
+      len: [6, 8]
     },
     status: {
       type: DataTypes.STRING,

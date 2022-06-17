@@ -5,7 +5,7 @@ const authController = require('../controllers/authController')
 const router = require('express').Router()
 
 router.route('/')
-  .get(authController.protect, blogController.getBlogs)
+  .get(blogController.getBlogs) /// no protection
   .post(checkLogin, blogController.createBlog)
 
 router.route('/:id')
