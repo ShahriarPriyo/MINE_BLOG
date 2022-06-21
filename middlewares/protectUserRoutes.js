@@ -30,6 +30,11 @@ const protectUserRoutes = catchAsync(async (req, res, next) => {
   }
 
   const requestId = Number(req.params.id)
-  (requestId === freshUser.id) ? next() : next(new AppError('Invalid user request', 401))
+  if (requestId === freshUser.id) {
+    next()
+  } else {
+    next(new AppError('Invalid user request', 401))
+  }
+})
 
-module.exports = { protectUserRoutes }
+module.exports = protectUserRoutes

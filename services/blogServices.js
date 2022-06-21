@@ -1,5 +1,5 @@
-const db = require('../models')
-const blog = db.bloglist
+// const db = require('../models')
+const blog = require('../models/BlogsModel')
 
 const createblog = async (data) => {
   const info = {
@@ -13,6 +13,7 @@ const createblog = async (data) => {
 }
 
 const getAllBlog = async () => {
+  console.log('blog::', blog)
   const blogs = await blog.findAll({})
   return blogs
 }

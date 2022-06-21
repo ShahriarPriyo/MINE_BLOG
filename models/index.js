@@ -33,7 +33,7 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 db.user = require('./UserModel.js')(sequelize, DataTypes)
-db.bloglist = require('./BlogsModel.js')(sequelize, DataTypes)
+// db.bloglist = require('./BlogsModel.js')(sequelize, DataTypes)
 /// edit this system
 db.sequelize.sync({ force: false })
   .then(() => {
