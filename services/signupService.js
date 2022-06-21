@@ -1,7 +1,6 @@
-const db = require('../models')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const User = db.user
+const User = require('../models/userModel')
 const registration = async (data) => {
   const hashedPassword = await bcrypt.hash(data.password, 10)
   const info = {

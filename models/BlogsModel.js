@@ -1,9 +1,9 @@
-const db = require('./index')
+const sequelize = require('./index')
 const { DataTypes } = require('sequelize')
 
-const blog = db.sequelize.define('bloglist', {
+const blog = sequelize.define('bloglist', {
   title: {
-    type: DataTypes.STRING(10000),
+    type: DataTypes.STRING(1000),
     allowNull: false,
     unique: true
   },
@@ -12,7 +12,7 @@ const blog = db.sequelize.define('bloglist', {
     allowNull: false
   },
   description: {
-    type: DataTypes.STRING(10000),
+    type: DataTypes.STRING(1000),
     allowNull: false
   }
 })

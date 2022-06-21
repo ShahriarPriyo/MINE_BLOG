@@ -6,8 +6,11 @@ require('dotenv').config()
 const blogRouter = require('./routers/blogRoutes.js')
 const userRouter = require('./routers/userRoutes.js')
 const authRouter = require('./routers/authRoutes')
+const dbConfig = require('./dbconfig/config')
 
 app.use(express.json())
+dbConfig()
+
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/v1/posts', blogRouter)
