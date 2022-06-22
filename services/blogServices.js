@@ -4,7 +4,7 @@ const blog = require('../models/BlogsModel')
 const createblog = async (data) => {
   const info = {
     title: data.title,
-    author: data.author,
+    username: data.username,
     description: data.description
   }
 

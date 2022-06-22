@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken')
 const catchAsync = require('../utilities/catchAsync')
 const AppError = require('../utilities/AppError')
-const db = require('../models/index')
-const User = db.user
-const Blog = db.bloglist
+// const db = require('../models/index')
+const User = require('../models/userModel')
+const Blog = require('../models/BlogsModel')
 
 const protectBlogRoutes = catchAsync(async (req, res, next) => {
   let token

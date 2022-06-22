@@ -1,7 +1,7 @@
 const blogController = require('../controllers/blogController.js')
 const protectBlog = require('../middlewares/protectBlog')
 const protectBlogRoutes = require('../middlewares/protectBlogRoutes')
-const authController = require('../controllers/authController')
+// const authController = require('../controllers/authController')
 
 const router = require('express').Router()
 
@@ -10,7 +10,7 @@ router.route('/')
   .post(protectBlog, blogController.createBlog)
 
 router.route('/:id')
-  .get(authController.protect, blogController.searchBlog)
+  .get(blogController.searchBlog)
   .put(protectBlogRoutes, blogController.updateBlog)
   .delete(protectBlogRoutes, blogController.deleteBlog)
 

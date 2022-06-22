@@ -7,8 +7,8 @@ const blog = sequelize.define('bloglist', {
     allowNull: false,
     unique: true
   },
-  author: {
-    type: DataTypes.INTEGER,
+  username: {
+    type: DataTypes.STRING,
     allowNull: false
   },
   description: {

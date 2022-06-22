@@ -6,6 +6,7 @@ const router = require('express').Router()
 router.get('/', userController.getUsers)
 
 router.route('/:id')
+  .get(protectUserRoutes, userController.getUsers)
   .put(protectUserRoutes, userController.updateUser)
   .delete(protectUserRoutes, userController.deleteUser)
 
