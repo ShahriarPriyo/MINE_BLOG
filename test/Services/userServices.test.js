@@ -30,4 +30,8 @@ describe('#UserServicesTest', () => {
     const test = await userService.getAllUser()
     expect(test).toBe(testUsers)
   })
+
+  test('update user data', async () => {
+    jest.spyOn(Users, 'update')
+  })
 })

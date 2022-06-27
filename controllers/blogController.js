@@ -1,17 +1,17 @@
 const blogService = require('../services/blogServices.js')
 const catchAsync = require('../utilities/catchAsync')
 const AppError = require('../utilities/appError')
-const sendResponse = require('../middlewares/contentNegotiation')
+const contentNegotiation = require('../middlewares/contentNegotiation')
 
 exports.createBlog = catchAsync(async (req, res, next) => {
   const newBlog = await blogService.createblog(req.body)
 
-  return sendResponse(req, res, newBlog, 201)
+  return contentNegotiation.sendResponse(req, res, newBlog, 201)
 })
 
 exports.getBlogs = catchAsync(async (req, res, next) => {
   const blogs = await blogService.getAllBlog()
-  return sendResponse(req, res, blogs, 200)
+  return contentNegotiation.sendResponse(req, res, blogs, 200)
 })
 
 exports.searchBlog = catchAsync(async (req, res, next) => {
@@ -21,7 +21,7 @@ exports.searchBlog = catchAsync(async (req, res, next) => {
     return next(new AppError('No blog found with that ID', 404))
   }
 
-  return sendResponse(req, res, blogs, 200)
+  return contentNegotiation.sendResponse(req, res, blogs, 200)
 })
 
 exports.updateBlog = catchAsync(async (req, res, next) => {
@@ -31,7 +31,7 @@ exports.updateBlog = catchAsync(async (req, res, next) => {
     return next(new AppError('No blog found with that ID', 404))
   }
 
-  return sendResponse(req, res, blogs, 200)
+  return contentNegotiation.sendResponse(req, res, blogs, 200)
 })
 
 exports.deleteBlog = catchAsync(async (req, res, next) => {

@@ -35,6 +35,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.2",
     "eslint-plugin-promise": "^6.0.0",
-    "jest": "^28.1.1"
+    "jest": "^28.1.1",
+    "node-mocks-http": "^1.11.0"
   }
 }

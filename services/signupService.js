@@ -17,7 +17,7 @@ const registration = async (data) => {
   }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_TIME
   })
-  return { user, token }
+  return { ...user, token }
 }
 
 module.exports = { registration }
