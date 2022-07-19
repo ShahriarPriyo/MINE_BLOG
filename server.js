@@ -7,7 +7,9 @@ const blogRouter = require('./routers/blogRoutes.js')
 const userRouter = require('./routers/userRoutes.js')
 const authRouter = require('./routers/authRoutes')
 const dbConfig = require('./dbconfig/config')
+const cors = require('cors')
 
+app.use(cors())
 app.use(express.json())
 dbConfig()
 
@@ -19,7 +21,7 @@ app.use('/api/v1/users', userRouter)
 
 app.use('/api/v1', authRouter)
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404))

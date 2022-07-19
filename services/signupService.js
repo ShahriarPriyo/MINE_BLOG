@@ -3,14 +3,14 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
 const registration = async (data) => {
   const hashedPassword = await bcrypt.hash(data.password, 10)
-  const info = {
+  const userData = {
     name: data.name,
     username: data.username,
     email: data.email,
     password: hashedPassword,
     status: data.status
   }
-  const user = await User.create(info)
+  const user = await User.create(userData)
   const token = jwt.sign({
     username: data.username,
     id: data.id

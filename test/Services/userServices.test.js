@@ -24,14 +24,29 @@ const testUsers = [
   }
 ]
 
-describe('#UserServicesTest', () => {
-  test('Get all users', async () => {
+describe('user service test', () => {
+  test('Get all user', async () => {
     jest.spyOn(Users, 'findAll').mockReturnValue(testUsers)
-    const test = await userService.getAllUser()
-    expect(test).toBe(testUsers)
+    const allUsers = await userService.getAllUser()
+    expect(allUsers).toBe(testUsers)
   })
 
-  test('update user data', async () => {
-    jest.spyOn(Users, 'update')
+  test('Update user userData', async () => {
+    jest.spyOn(Users, 'update').mockReturnValue(1)
+    const { id, name, username, email } = testUsers[0]
+    const userData = { name, username, email }
+    const user = await userService.updateUser(id, userData)
+    expect(Users.update).toHaveBeenCalledTimes(1)
+    expect(Users.update).toHaveBeenCalledWith(userData, { where: { id } })
+    expect(user).toBe(1)
+  })
+
+  test('User Delete', async () => {
+    jest.spyOn(Users, 'destroy').mockReturnValue()
+    const { id } = testUsers[0]
+    const user = await userService.deleteUser(id)
+    expect(Users.destroy).toHaveBeenCalledTimes(1)
+    expect(Users.destroy).toHaveBeenCalledWith({ where: { id } })
+    expect(user).toBe()
   })
 })

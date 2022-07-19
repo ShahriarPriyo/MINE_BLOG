@@ -2,18 +2,17 @@
 const blog = require('../models/BlogsModel')
 
 const createblog = async (data) => {
-  const info = {
+  const userData = {
     title: data.title,
     username: data.username,
     description: data.description
   }
 
-  const blogs = await blog.create(info)
+  const blogs = await blog.create(userData)
   return blogs
 }
 
 const getAllBlog = async () => {
-  console.log('blog::', blog)
   const blogs = await blog.findAll({})
   return blogs
 }

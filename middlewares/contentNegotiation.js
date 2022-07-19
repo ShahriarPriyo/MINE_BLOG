@@ -2,11 +2,11 @@ const X2JS = require('x2js')
 const JS2PT = require('json-to-plain-text')
 const json2html = require('json-to-html')
 const jsonData = (inputData) => {
-  return JSON.parse(JSON.stringify(inputData))
+  return JSON.stringify(inputData)
 }
 const xmlData = (inputData) => {
   const x2js = new X2JS()
-  const myXML = x2js.js2xml(JSON.parse(JSON.stringify(inputData)))
+  const myXML = x2js.js2xml(JSON.stringify(inputData))
   return myXML
 }
 const textData = (inputData) => {

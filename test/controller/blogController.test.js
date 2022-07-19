@@ -111,4 +111,19 @@ describe('Testilng all functions of blogController', () => {
     expect(mres.statusCode).toBe(mystatus)
     expect(mresdata).toEqual(testBlog)
   })
+
+  test('testing deleteBlog', async () => {
+    jest.spyOn(blogService, 'deleteBlog').mockReturnValue(testBlog)
+    const mreq = httpMocks.createRequest({
+      method: 'DELETE',
+      params: {
+        id: testBlog[0].id
+      }
+    })
+    const mres = httpMocks.createResponse()
+    const mnext = jest.fn()
+    const mystatus = 204
+    await blogController.deleteBlog(mreq, mres, mnext)
+    expect(mres.statusCode).toBe(mystatus)
+  })
 })
